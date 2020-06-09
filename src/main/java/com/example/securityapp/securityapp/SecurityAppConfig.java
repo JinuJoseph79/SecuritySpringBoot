@@ -26,6 +26,9 @@ public class SecurityAppConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/home").permitAll()
+				.antMatchers("/HR").hasRole("ADMIN")
+				
+				.antMatchers("/employees").hasRole("USER")
 				.anyRequest().authenticated()
 				.and()
 	            .formLogin()
@@ -34,7 +37,9 @@ public class SecurityAppConfig extends WebSecurityConfigurerAdapter {
 	                .failureUrl("/login?error")
 	                .permitAll()
 	                .and()
-	                .csrf().disable();
+	                .csrf().disable()
+	                
+	             .exceptionHandling();
 			;
 	}
 	
