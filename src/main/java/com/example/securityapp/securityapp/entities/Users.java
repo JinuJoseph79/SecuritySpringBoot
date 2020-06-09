@@ -12,6 +12,13 @@ public class Users {
 	private String password;
 	private int enabled;
 	
+	@ManyToMany(cascade=CascadeType.MERGE)
+    @JoinTable(
+       name="user_role",
+       joinColumns={@JoinColumn(name="user_id", referencedColumnName="ID")},
+       inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="ID")})
+    private List<Role> role;
+	
 	
 	public int getEnabled() {
 		return enabled;
@@ -37,6 +44,13 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public List<Role> getRoles() {
+		return role;
+	}
+	public void setRoles(List<Role> role) {
+		this.role = role;
+	}
 
+	
 	
 }
