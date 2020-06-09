@@ -10,6 +10,7 @@ import com.example.securityapp.securityapp.entities.Users;
 import com.example.securityapp.securityapp.repositories.UserRepository;
 
 @Service
+@Transactional
 public class MyUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepo;
